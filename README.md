@@ -1,4 +1,4 @@
-# cal
+# Cal
 ##Ruby implementation of Unix Cal
 ##Nashville Software School Cohort 8
 
@@ -29,13 +29,20 @@ The first argument is the month. The second is the year.
 
 The input of `./cal.rb 01 2012` outputs the following:
 
-"    January 2012
-Su Mo Tu We Th Fr Sa
- 1  2  3  4  5  6  7
- 8  9 10 11 12 13 14
-15 16 17 18 19 20 21
-22 23 24 25 26 27 28
-29 30 31"
+>    January 2012
+
+> Su Mo Tu We Th Fr Sa
+
+> 1  2  3  4  5  6  7
+
+> 8  9 10 11 12 13 14
+
+> 15 16 17 18 19 20 21
+
+> 22 23 24 25 26 27 28
+
+> 29 30 31
+
 
 * The program only accepts dates in the MM YYYY format, using only
   numbers

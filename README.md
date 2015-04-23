@@ -32,6 +32,19 @@ The first argument is the month. The second is the year.
 
 * Print the month following the Unix cal style output
 
+`./cal.rb 02 2200` should output:
+
+```
+   February 2200
+Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28
+
+```
+
 If there was no acceptable input the program outputs:
 
 > Date not in acceptable format/range

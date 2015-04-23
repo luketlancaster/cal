@@ -1,3 +1,5 @@
+require_relative 'day'
+
 class Month
   attr_reader :month, :year, :name, :day_names
 

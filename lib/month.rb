@@ -1,15 +1,21 @@
 class Month
-  attr_reader :month, :year
+  attr_reader :month, :year, :name, :day_names
 
   def initialize(month, year)
     @month = month
     @year = year
+    @day_names = 'Su Mo Tu We Th Fr Sa'
+  end
+
+  def name
+    month_array = ['Months', 'January', 'February', ' March', ' April', '  May', ' June', ' July', 'August', 'September', 'October', 'November', 'December']
+    @name = month_array[@month]
   end
 
   def to_s
     <<EOS
-    January #{year}
-Su Mo Tu We Th Fr Sa
+    #{name} #{year}
+#{day_names}
  1  2  3  4  5  6  7
  8  9 10 11 12 13 14
 15 16 17 18 19 20 21

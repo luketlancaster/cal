@@ -9,7 +9,7 @@ class Month
     @year = year
     @day_names = 'Su Mo Tu We Th Fr Sa'
     @start_day = Day.new(month, year)
-    @leap = Year.new(month, year)
+    @leap = Year.new(year)
   end
 
   def name

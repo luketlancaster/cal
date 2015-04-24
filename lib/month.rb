@@ -2,7 +2,7 @@ require_relative 'day'
 require_relative 'year'
 
 class Month
-  attr_reader :month, :year, :name, :day_names, :start_day, :year, :banner
+  attr_reader :month, :year, :name, :day_names, :start_day, :year, :banner, :weeks
 
   def initialize(month, year)
     @month = month
@@ -18,27 +18,46 @@ class Month
   end
 
   def days_in_month
-    if @month == 1 or @month == 3 or @month == 5 or @month == 7 or @month == 8 or @month == 10 or @month == 12
-      31
+    if @month == 4 or @month == 6 or @month == 9 or @month == 11
+      30
     elsif @month == 2 and @leap.leap?
       29
     elsif @month == 2
       28
     else
-      30
+      31
     end
   end
 
+  def month_creator
+    @weeks = ''
+    days_in_month.to_i.times do |day|
+      if day < 9
+        day += 1
+        if day % 7 != 0
+          @weeks << ' ' << day.to_s << ' '
+        elsif day % 7 == 0
+          @weeks << ' ' << day.to_s << "\n"
+        end
+      else
+        day += 1
+        if day % 7 != 0
+          @weeks << day.to_s << ' '
+        elsif day % 7 == 0
+          @weeks << day.to_s << "\n"
+        end
+      end
+    end
+    @weeks = @weeks.to_s.rstrip
+  end
+
   def to_s
+    @weeks = month_creator
     @banner = (name << ' ' << year.to_s).center(20).rstrip
 <<EOS
 #{banner}
 #{day_names}
- 1  2  3  4  5  6  7
- 8  9 10 11 12 13 14
-15 16 17 18 19 20 21
-22 23 24 25 26 27 28
-29 30 31
+#{weeks}
 
 EOS
   end

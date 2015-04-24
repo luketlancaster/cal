@@ -8,6 +8,11 @@ class TestMonth < Minitest::Test
     assert_equal 2015, m.year
   end
 
+  def test_initilizing_a_month_creates_day
+    m = Month.new(01, 2012)
+    assert_equal 1, m.start_day.day_of_week
+  end
+
   def test_to_s_on_jan_2012
     m = Month.new(01, 2012)
     expected = <<EOS

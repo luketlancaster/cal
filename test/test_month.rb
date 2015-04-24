@@ -63,17 +63,38 @@ EOS
 
   def test_name_for_march
     m = Month.new(03, 2009)
-    assert_equal m.name.lstrip, "March"
+    assert_equal "March", m.name.lstrip
   end
 
   def test_name_for_january
     m = Month.new(01, 2009)
-    assert_equal m.name, "January"
+    assert_equal "January", m.name
   end
 
   def test_name_for_december
     m = Month.new(12, 2009)
-    assert_equal m.name, "December"
+    assert_equal "December", m.name
   end
+
+  def test_days_in_long_month
+    m = Month.new(1, 2015)
+    assert_equal 31, m.days_in_month
+  end
+
+  def test_days_in_short_month
+    m = Month.new(4, 2015)
+    assert_equal 30, m.days_in_month
+  end
+
+  def test_days_in_feb_leap_month
+    m = Month.new(2, 2000)
+    assert_equal 29, m.days_in_month
+  end
+
+  def test_days_in_feb_non_leap_month
+    m = Month.new(2, 2015)
+    assert_equal 28, m.days_in_month
+  end
+
 
 end

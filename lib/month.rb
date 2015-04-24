@@ -2,7 +2,7 @@ require_relative 'day'
 require_relative 'year'
 
 class Month
-  attr_reader :month, :year, :name, :day_names, :start_day, :year, :days_in_month
+  attr_reader :month, :year, :name, :day_names, :start_day, :year, :banner
 
   def initialize(month, year)
     @month = month
@@ -13,23 +13,26 @@ class Month
   end
 
   def name
-    month_array = ['Months', ' January', 'February', '  March', '  April', '   May', '  June', '  July', ' August', 'September', 'October', 'November', 'December']
+    month_array = ['Months', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     @name = month_array[@month]
   end
 
-  if @month == 1 or @month == 3 or @month == 5 or @month == 7 or @month == 8 or @month == 10 or @month == 12
-    @days_in_month = 31
-  elsif @month == 2 and @leap.leap?
-    @days_in_month = 29
-  elsif @month == 2
-    @days_in_month = 28
-  else
-    @days_in_month = 30
+  def days_in_month
+    if @month == 1 or @month == 3 or @month == 5 or @month == 7 or @month == 8 or @month == 10 or @month == 12
+      31
+    elsif @month == 2 and @leap.leap?
+      29
+    elsif @month == 2
+      28
+    else
+      30
+    end
   end
 
   def to_s
-    <<EOS
-   #{name} #{year}
+    @banner = (name << ' ' << year.to_s).center(20).rstrip
+<<EOS
+#{banner}
 #{day_names}
  1  2  3  4  5  6  7
  8  9 10 11 12 13 14

@@ -270,7 +270,7 @@ EOS
   end
 
   def test_october_length
-    output = `./cal.rb 10 1904`
+    output = `./cal.rb 10 1905`
     expected = <<EOS
     October 1905
 Su Mo Tu We Th Fr Sa

@@ -13,7 +13,7 @@ class Month
   end
 
   def name
-    month_array = ['Months', 'January', 'February', ' March', ' April', '  May', ' June', ' July', 'August', 'September', 'October', 'November', 'December']
+    month_array = ['Months', ' January', 'February', '  March', '  April', '   May', '  June', '  July', ' August', 'September', 'October', 'November', 'December']
     @name = month_array[@month]
   end
 
@@ -29,7 +29,7 @@ class Month
 
   def to_s
     <<EOS
-    #{name} #{year}
+   #{name} #{year}
 #{day_names}
  1  2  3  4  5  6  7
  8  9 10 11 12 13 14

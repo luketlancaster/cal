@@ -335,7 +335,7 @@ EOS
   end
 
   def test_skip_century_leap_year
-    output = `./cal.rb 02 2100`
+    output = `./cal.rb 02 2200`
     expected = <<EOS
    February 2200
 Su Mo Tu We Th Fr Sa
@@ -354,7 +354,7 @@ EOS
     output = `./cal.rb 02 2000`
     expected = <<EOS
    February 2000
-Su Mo Tu We Th Fr Sa:
+Su Mo Tu We Th Fr Sa
        1  2  3  4  5
  6  7  8  9 10 11 12
 13 14 15 16 17 18 19

@@ -63,7 +63,7 @@ EOS
 
   def test_name_for_march
     m = Month.new(03, 2009)
-    assert_equal "March", m.name.lstrip
+    assert_equal "March", m.name
   end
 
   def test_name_for_january

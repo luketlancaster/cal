@@ -11,7 +11,6 @@ class Month
     @day_names = 'Su Mo Tu We Th Fr Sa'
     @start_day = Day.new(month, year)
     @leap = Year.new(year).leap?
-    @weeks = []
   end
 
   def name
@@ -57,6 +56,7 @@ class Month
   end
 
   def week_creator
+    @weeks = []
     days = days_in_month + 1
     days.times do |day|
       if day != 0
@@ -66,16 +66,21 @@ class Month
     weeks
   end
 
-  def to_s
-    @banner = (name << ' ' << year.to_s).center(20).rstrip
+  def month_slicer
     week_creator
     month_creator
+    month = ''
+    @weeks.each_slice(7) {|week| month << week.join.rstrip << "\n"}
+    month
+  end
 
-    puts banner
-    puts day_names
-
-    @weeks.each_slice(7) {|week| puts week.join.rstrip}
-
+  def to_s
+    @banner = (name << ' ' << year.to_s).center(20).rstrip
+    <<EOS
+#{banner}
+#{day_names}
+#{month_slicer}
+EOS
   end
 
 end

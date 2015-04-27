@@ -6,7 +6,7 @@ month = ARGV[0].to_i
 year = ARGV[1].to_i
 
 def exit_with_help_message
-  print 'Date not in acceptable format/range'
+  print "Date not in acceptable format/range\n"
   exit
 end
 

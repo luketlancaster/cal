@@ -4,42 +4,42 @@ class TestCheersIntegration < MiniTest::Unit::TestCase
 
   def test_no_input
     output = `./cal.rb`
-    expected = 'Date not in acceptable format/range'
+    expected = "Date not in acceptable format/range\n"
 
     assert_equal expected, output
   end
 
   def test_date_too_early
     output = `./cal.rb 12 1799`
-    expected = 'Date not in acceptable format/range'
+    expected = "Date not in acceptable format/range\n"
 
     assert_equal expected, output
   end
 
   def test_wrong_format_named_month
     output = `./cal.rb April 2764`
-    expected = 'Date not in acceptable format/range'
+    expected = "Date not in acceptable format/range\n"
 
     assert_equal expected, output
   end
 
   def test_wrong_format_swapped_year_month
     output = `./cal.rb 1864 05`
-    expected = 'Date not in acceptable format/range'
+    expected = "Date not in acceptable format/range\n"
 
     assert_equal expected, output
   end
 
   def test_date_too_late
     output = `./cal.rb 1 3001`
-    expected = 'Date not in acceptable format/range'
+    expected = "Date not in acceptable format/range\n"
 
     assert_equal expected, output
   end
 
   def test_date_incorrect_length_of_year
     output = `./cal.rb 132 20014`
-    expected = 'Date not in acceptable format/range'
+    expected = "Date not in acceptable format/range\n"
 
     assert_equal expected, output
   end

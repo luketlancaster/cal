@@ -28,4 +28,26 @@ class TestYear < Minitest::Test
     assert_equal true, y.leap?
   end
 
+  def test_create_year_of_12_months
+    y = Year.new(2102)
+    assert_equal 12, y.months_creator.length
+  end
+
+  def test_month_1_is_January
+    y = Year.new(1800)
+    assert_equal "January", y.months_creator[0].name
+  end
+
+  def test_month_6_is_June
+    y = Year.new(1899)
+    assert_equal "June", y.months_creator[5].name
+  end
+
+  def test_month_12_is_December
+    y = Year.new(1899)
+    assert_equal "December", y.months_creator[11].name
+  end
+
+
+
 end

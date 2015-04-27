@@ -83,4 +83,14 @@ class Month
 EOS
   end
 
+  def to_s_for_year
+    @banner = (name).center(20)
+    <<EOS
+#{banner}
+#{day_names}
+#{month_slicer}
+EOS
+  end
+
+
 end

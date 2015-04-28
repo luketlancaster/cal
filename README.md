@@ -27,7 +27,7 @@ Run the program by running `ruby cal.rb` or `./cal.rb`
 
 The first argument is the month. The second is the year.
 
-* The program only accepts dates in the MM YYYY format, using only
+* The program accepts dates in the MM YYYY format, using only
   numbers
 
 * Print the month following the Unix cal style output
@@ -49,18 +49,45 @@ If there was no acceptable input the program outputs:
 
 > Date not in acceptable format/range
 
-### Test Cases
+###Usage for Year Printing
 
-* Start with a month that starts on Sunday
-* Regular leap years
-* Century leap years
-* 400 year leap years
-* Test each month length
-  * Two for Feburary
-* Min date - Jan 1800
-* Max date - Dec 3000
-* Outlier dates on either side of min and max
-* Include error cases
-  * April 2014
-  * 2014 04
-  * etc
+* Passing only an acceptable year value will result in the entire year printing out
+
+`./cal.rb 2200` will output:
+
+```
+                             2200
+
+      January               February               March
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+          1  2  3  4                     1                     1
+ 5  6  7  8  9 10 11   2  3  4  5  6  7  8   2  3  4  5  6  7  8
+12 13 14 15 16 17 18   9 10 11 12 13 14 15   9 10 11 12 13 14 15
+19 20 21 22 23 24 25  16 17 18 19 20 21 22  16 17 18 19 20 21 22
+26 27 28 29 30 31     23 24 25 26 27 28     23 24 25 26 27 28 29
+                                            30 31
+       April                  May                   June
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+       1  2  3  4  5               1  2  3   1  2  3  4  5  6  7
+ 6  7  8  9 10 11 12   4  5  6  7  8  9 10   8  9 10 11 12 13 14
+13 14 15 16 17 18 19  11 12 13 14 15 16 17  15 16 17 18 19 20 21
+20 21 22 23 24 25 26  18 19 20 21 22 23 24  22 23 24 25 26 27 28
+27 28 29 30           25 26 27 28 29 30 31  29 30
+                                            
+        July                 August              September
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+       1  2  3  4  5                  1  2      1  2  3  4  5  6
+ 6  7  8  9 10 11 12   3  4  5  6  7  8  9   7  8  9 10 11 12 13
+13 14 15 16 17 18 19  10 11 12 13 14 15 16  14 15 16 17 18 19 20
+20 21 22 23 24 25 26  17 18 19 20 21 22 23  21 22 23 24 25 26 27
+27 28 29 30 31        24 25 26 27 28 29 30  28 29 30
+                      31                    
+      October               November              December
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+          1  2  3  4                     1      1  2  3  4  5  6
+ 5  6  7  8  9 10 11   2  3  4  5  6  7  8   7  8  9 10 11 12 13
+12 13 14 15 16 17 18   9 10 11 12 13 14 15  14 15 16 17 18 19 20
+19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27
+26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31
+                      30                    
+```

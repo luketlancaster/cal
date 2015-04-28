@@ -42,7 +42,7 @@ class Year
       if counter == 0
         counter += 1
       else
-        group << line.rstrip << '  ' << @two[col].lines[counter].rstrip << '  ' << three[col].lines[counter]
+        group << line.rstrip.ljust(20, ' ') << '  ' << @two[col].lines[counter].rstrip.ljust(20, ' ') << '  ' << three[col].lines[counter].rstrip.ljust(20, ' ').rstrip << "\n"
         counter += 1
       end
     end
@@ -51,15 +51,15 @@ class Year
 
   def to_s
     months_creator
-    months1 = @month_array[0].center(20, ' ') << @month_array[1].center(24, ' ') << @month_array[2].center(20, ' ')
-    months2 = @month_array[3].center(20, ' ') << @month_array[4].center(24, ' ') << @month_array[5].center(20, ' ')
-    months3 = @month_array[6].center(20, ' ') << @month_array[7].center(24, ' ') << @month_array[8].center(20, ' ')
-    months4 = @month_array[9].center(20, ' ') << @month_array[10].center(24, ' ') << @month_array[11].center(20, ' ')
+    months1 = @month_array[0].center(20, ' ') << @month_array[1].center(24, ' ') << @month_array[2].center(20, ' ').rstrip
+    months2 = @month_array[3].center(20, ' ') << @month_array[4].center(24, ' ') << @month_array[5].center(20, ' ').rstrip
+    months3 = @month_array[6].center(20, ' ') << @month_array[7].center(24, ' ') << @month_array[8].center(20, ' ').rstrip
+    months4 = @month_array[9].center(20, ' ') << @month_array[10].center(24, ' ') << @month_array[11].center(20, ' ').rstrip
     banner = (year.to_s).center(63).rstrip << "\n"
-    row1 = line_creator(0)
-    row2 = line_creator(1)
-    row3 = line_creator(2)
-    row4 = line_creator(3)
+    row1 = line_creator(0).chomp
+    row2 = line_creator(1).chomp
+    row3 = line_creator(2).chomp
+    row4 = line_creator(3).chomp
 
     <<EOS
 #{banner}
@@ -71,7 +71,6 @@ class Year
 #{row3}
 #{months4}
 #{row4}
-
 EOS
 
   end

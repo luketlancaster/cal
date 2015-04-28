@@ -28,11 +28,6 @@ class TestYear < Minitest::Test
     assert_equal true, y.leap?
   end
 
-  def test_create_year_of_12_months
-    y = Year.new(2102)
-    assert_equal 12, y.months_creator.length
-  end
-
   def test_to_s_on_jan_2012
     y = Year.new(2012)
     expected = <<EOS

@@ -1,15 +1,14 @@
 require_relative 'month'
 
 class Year
-  attr_reader :year, :months, :one, :two, :three, :month_array
+  attr_reader :year, :months, :first_col, :second_col, :third_col
 
   def initialize(year)
     @year = year
     @months = []
-    @one = []
-    @two = []
-    @three = []
-    @month_array = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    @first_col = []
+    @second_col = []
+    @third_col = []
   end
 
   def leap?
@@ -29,20 +28,25 @@ class Year
       @months[x] = Month.new((x + 1), year).to_s_for_year
     end
     months.each_slice(3) do |a, b, c|
-      @one << a
-      @two << b
-      @three << c
+      @first_col << a
+      @second_col << b
+      @third_col << c
     end
   end
 
   def line_creator(col)
     group = ""
     counter = 0
-    @one[col].each_line do |line|
+    @first_col[col].each_line do |line|
       if counter == 0
+        group << line.center(10, ' ').chomp
+        group << ' ' << @second_col[col].lines[counter].chomp.center(22, ' ')
+        group << ' ' << @third_col[col].lines[counter].center(20, ' ').rstrip << "\n"
         counter += 1
       else
-        group << line.rstrip.ljust(20, ' ') << '  ' << @two[col].lines[counter].rstrip.ljust(20, ' ') << '  ' << three[col].lines[counter].rstrip.ljust(20, ' ').rstrip << "\n"
+        group << line.rstrip.ljust(20, ' ')
+        group << '  ' << @second_col[col].lines[counter].rstrip.ljust(20, ' ')
+        group << '  ' << @third_col[col].lines[counter].ljust(20, ' ').rstrip << "\n"
         counter += 1
       end
     end
@@ -51,10 +55,6 @@ class Year
 
   def to_s
     months_creator
-    months1 = @month_array[0].center(20, ' ') << @month_array[1].center(24, ' ') << @month_array[2].center(20, ' ').rstrip
-    months2 = @month_array[3].center(20, ' ') << @month_array[4].center(24, ' ') << @month_array[5].center(20, ' ').rstrip
-    months3 = @month_array[6].center(20, ' ') << @month_array[7].center(24, ' ') << @month_array[8].center(20, ' ').rstrip
-    months4 = @month_array[9].center(20, ' ') << @month_array[10].center(24, ' ') << @month_array[11].center(20, ' ').rstrip
     banner = (year.to_s).center(63).rstrip << "\n"
     row1 = line_creator(0).chomp
     row2 = line_creator(1).chomp
@@ -63,13 +63,9 @@ class Year
 
     <<EOS
 #{banner}
-#{months1}
 #{row1}
-#{months2}
 #{row2}
-#{months3}
 #{row3}
-#{months4}
 #{row4}
 EOS
 

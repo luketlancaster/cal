@@ -10,7 +10,7 @@ class TestMonth < Minitest::Test
 
   def test_initilizing_a_month_creates_day
     m = Month.new(01, 2012)
-    assert_equal 1, m.start_day.day_of_week
+    assert_equal 1, m.start_day
   end
 
   def test_to_s_on_jan_2012

@@ -12,6 +12,16 @@ class Month
     @leap = Year.new(year).leap?
   end
 
+  def to_s
+    <<EOS
+#{(name << ' ' + year.to_s).center(20).rstrip}
+Su Mo Tu We Th Fr Sa
+#{month_slicer}
+EOS
+  end
+
+  private
+
   def name
     month_index = @month - 1
     month_array = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -30,16 +40,6 @@ class Month
     end
   end
 
-  def start_spaces
-    if @start_day.zero?
-      6
-    elsif @start_day == 1
-      0
-    else
-      @start_day -= 1
-    end
-  end
-
   def create_array_of_days
     @weeks = []
     (1..days_in_month).each do |day|
@@ -52,37 +52,19 @@ class Month
     create_array_of_days
     @weeks = @weeks.map do |day|
       if day < 10
-        ' ' << day.to_s << ' '
+        day.to_s.center(3)
       else
-        day.to_s << ' '
+        day.to_s.ljust(3)
       end
     end
-    start_spaces.times { weeks.unshift('   ') }
+    (@start_day - 1).times { weeks.unshift('   ') }
   end
 
   def month_slicer
     shove_spaces_into_array_of_days
     month = ''
-    @weeks.each_slice(7) {|week| month << week.join.rstrip << "\n"}
+    @weeks.each_slice(7) {|week| month << week.join.rstrip + "\n"}
     month
   end
-
-  def to_s
-    <<EOS
-#{(name << ' ' << year.to_s).center(20).rstrip}
-Su Mo Tu We Th Fr Sa
-#{month_slicer}
-EOS
-  end
-
-  def to_s_for_year_class
-
-    <<EOS
-#{(name).center(20)}
-Su Mo Tu We Th Fr Sa
-#{month_slicer}
-EOS
-  end
-
 
 end

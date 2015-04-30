@@ -1,5 +1,5 @@
 class Day
-  attr_reader :month, :year, :day
+  attr_reader :month, :year
 
   def initialize(month, year)
     @month = month
@@ -24,7 +24,12 @@ class Day
     m = @month
     y = @year
 
-    @day = (q + (((m + 1) * 26) / 10) + y + (y / 4) + 6 * (y / 100) + (y / 400)) % 7
-    @day
+    day = (q + (((m + 1) * 26) / 10) + y + (y / 4) + 6 * (y / 100) + (y / 400)) % 7
+
+    if day == 0
+      day = 7
+    end
+
+    day
   end
 end

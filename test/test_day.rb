@@ -31,7 +31,7 @@ class TestDay < Minitest::Test
 
   def test_jan_1_200
     d = Day.new(1, 2000)
-    assert_equal 0, d.day_of_week
+    assert_equal 7, d.day_of_week
   end
 
 end

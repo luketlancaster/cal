@@ -1,7 +1,7 @@
 require_relative 'month'
 
 class Year
-  attr_reader :year, :months, :first_col, :second_col, :third_col
+  attr_reader :year, :months, :first_col, :second_col, :third_col, :group
 
   def initialize(year)
     @year = year
@@ -57,8 +57,16 @@ EOS
         counter += 1
       else
         group << line.rstrip.ljust(20)
-        group << '  ' + @second_col[row].lines[counter].rstrip.ljust(20)
-        group << '  ' + @third_col[row].lines[counter].ljust(20).rstrip + "\n"
+        if @second_col[row].lines[counter].nil?
+          group << "\n".rstrip
+        else
+          group << '  ' + @second_col[row].lines[counter].rstrip.ljust(20)
+        end
+        if @third_col[row].lines[counter].nil?
+          group << "\n"
+        else
+          group << '  ' + @third_col[row].lines[counter].ljust(20).rstrip + "\n"
+        end
         counter += 1
       end
     end

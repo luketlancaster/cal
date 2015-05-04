@@ -1,6 +1,6 @@
 require_relative 'helper'
 
-class TestCheersIntegration < MiniTest::Unit::TestCase
+class TestCheersIntegration < MiniTest::Test
 
   def test_no_input
     output = `./cal.rb`
